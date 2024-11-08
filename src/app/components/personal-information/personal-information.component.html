@@ -1,0 +1,37 @@
+    <header id="header-name">
+        <figure id="flag-img-figure">
+            <img src="{{selectedCountry?.coatOfArms}}" class="flag-img" onerror="this.classList.add('hidden')"  onload="this.classList.remove('hidden')" >
+        </figure>
+        <div id="name">
+            {{character.firstname}} {{character.lastname}} 
+        </div>
+        <figure id="flag-img-figure">
+            <img src="{{selectedCountry?.coatOfArms}}" class="flag-img" onerror="this.classList.add('hidden')"  onload="this.classList.remove('hidden')" >
+        </figure>
+    </header>
+    <div id="personal-information-data">
+        <div id="pp-frame">
+            <figure id="pp-frame">
+                <img id="profile-picture" src="img/Aki.png" alt="profile picture">
+            </figure>
+        </div>
+        
+        <div id="other-informations">
+            <div id="age" class="input-info-container">
+                <label for="age-input">Age :</label>
+                <input type="number" name="Age" id="age-input" class="input-info" [defaultValue]="character.age">
+            </div>
+            <div id="nationality" class="input-info-container">
+                <label for="nationality-input">Nationalité :</label>
+                <select [(ngModel)]="selectedCountry"  id="select-country">
+                    <option *ngFor="let country of countries" [ngValue]="country">
+                        {{country.flagEmoji}} {{ country.name }} 
+                    </option>
+                </select>
+                
+            </div>
+
+        </div>
+        
+    </div>
+    
