@@ -1,0 +1,19 @@
+<div id="sign-up">
+    <h2>Inscription</h2>
+    <div id="pseudo-container" class="log-input-container">
+        <label class="log-label" for="pseudo-input">Pseudo:</label>
+        <input type="text" name="Pseudo" #inputPseudo placeholder="Entrer le pseudo">
+    </div>
+    <div id="password-container" class="log-input-container">
+        <label class="log-label" for="password-input">Mot de passe:</label>
+        <input type="password" name="Password" #inputPassword placeholder="Entrer le mot de passe">
+    </div>
+    <div id="password-container" class="log-input-container">
+        <label class="log-label" for="confirmation-password-input">Confirmation de mot de passe:</label>
+        <input type="password" name="PasswordConfirmation" #inputPasswordConfirmation placeholder="Confirmer le mot de passe" >
+    </div>
+    <button  id="sign-button" (click)="signUp(inputPseudo.value,inputPassword.value,inputPasswordConfirmation.value)">S'inscrire</button>
+    <a routerLink="/login">
+        Déja inscrit? Se connecter à son compte
+    </a>
+</div>

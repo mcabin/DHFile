@@ -1,6 +1,7 @@
-import { Component ,ViewEncapsulation} from '@angular/core';
+import { Component ,Input,ViewEncapsulation} from '@angular/core';
 import { StatisticCaseComponent } from "./statistic-case/statistic-case.component";
-
+import { Character } from '../../models/character.model';
+import { StatisticEnum } from '../../models/enum/statistic.enum';
 @Component({
   selector: 'app-statistic',
   standalone: true,
@@ -9,6 +10,8 @@ import { StatisticCaseComponent } from "./statistic-case/statistic-case.componen
   styleUrl: './statistic.component.css',
   encapsulation:ViewEncapsulation.Emulated
 })
-export class StatisticComponent {
 
+export class StatisticComponent {
+  @Input({required:true}) character!:Character;
+  StatisticEnum=StatisticEnum;
 }

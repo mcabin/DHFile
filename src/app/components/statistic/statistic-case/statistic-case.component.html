@@ -4,10 +4,10 @@
     </header>
     <div class="statistic-information">
         <img src={{imgPath}} alt="" class="stat-icon">
-        <input type="number" [defaultValue]="0" max="10" min="0" class="stat-input">
+        <input type="number" [(ngModel)]="tmpLevel"  class="stat-input" [min]="minLevel" [max]="maxLevel"  (keypress)="allowOnlyNumbers($event)">
         <div class="stat-input-button-container">
-            <button class="stat-input-button">+</button>
-            <button class="stat-input-button">-</button>
+            <button class="stat-input-button" (click)="incrementValue()">+</button>
+            <button class="stat-input-button" (click)="decrementValue()">-</button>
         </div>
     </div>
 </div>

@@ -1,0 +1,21 @@
+#sign-up{
+    display: flex;
+    width: 30%;
+    height: 50%;
+    background-color: aliceblue;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.log-input-container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}

@@ -4,18 +4,18 @@
 </header>
 <div id="stat-container">
     <div class="stat-case">
-        <app-statistic-case imgPath="img\Icon\Physic-Icon.png" type="Physique"></app-statistic-case>
+        <app-statistic-case imgPath="img\Icon\Physic-Icon.png" [type]='StatisticEnum.Physic' [character]="character"></app-statistic-case>
     </div>
     <div class="stat-case">
-        <app-statistic-case imgPath="img\Icon\Dexterity-Icon.png" type="Agilité"></app-statistic-case>
+        <app-statistic-case imgPath="img\Icon\Dexterity-Icon.png" [type]='StatisticEnum.Dexterity' [character]="character"></app-statistic-case>
     </div>
     <div class="stat-case">
-        <app-statistic-case imgPath="img\Icon\Composure-Icon.png" type="Sang-Froid"></app-statistic-case>
+        <app-statistic-case imgPath="img\Icon\Composure-Icon.png" [type]='StatisticEnum.Composure' [character]="character"></app-statistic-case>
     </div>
     <div class="stat-case">
-        <app-statistic-case imgPath="img\Icon\Social-Icon.png" type="Charisme"></app-statistic-case>
+        <app-statistic-case imgPath="img\Icon\Social-Icon.png" [type]='StatisticEnum.Social' [character]="character"></app-statistic-case>
     </div>
     <div class="stat-case">
-        <app-statistic-case imgPath="img\Icon\Knowledge-Icon.png" type="Connaissance"></app-statistic-case>
+        <app-statistic-case imgPath="img\Icon\Knowledge-Icon.png" [type]='StatisticEnum.Knowledge' [character]="character"></app-statistic-case>
     </div>
 </div>
