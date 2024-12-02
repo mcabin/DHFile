@@ -1,55 +1,52 @@
 package api.DHFile.Entities;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.*;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import api.DHFile.enums.RoleEnum;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import api.DHFile.enums.RoleEnum;
-@Entity(name = "USER")
-public class User {
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Entity
+@Table(name="_USER")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
     private String pseudo;
     private String password;
-    private RoleEnum[] roles;
+    @Enumerated(EnumType.STRING)
+    private RoleEnum role;
 
-    
-    public User() {
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
-
-    
-
-    public String[] getRolesInString(){
-       return Arrays.stream(this.roles).map(RoleEnum::getLabel).toArray(String[]::new);
-    }
-    public RoleEnum[] getRoles() {
-        return roles;
-    }
-    public void setRoles(RoleEnum[] roles) {
-        this.roles = roles;
-    }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getPseudo() {
+    @Override
+    public String getUsername() {
         return pseudo;
     }
-    public void setPseudo(String pseudo) {
-        this.pseudo = pseudo;
-    }
+    @Override
     public String getPassword() {
         return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     
