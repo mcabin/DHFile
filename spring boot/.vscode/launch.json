@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DhFileApplication<DHFile>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "api.DHFile.DhFileApplication",
+            "projectName": "DHFile",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

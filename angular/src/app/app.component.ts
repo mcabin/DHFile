@@ -9,5 +9,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  isSidebarClosed:boolean=false;
   title = 'DH-File';
+
+  toggleSidebar() {
+    this.isSidebarClosed=!this.isSidebarClosed;
+    console.log(this.isSidebarClosed);
+    
+  }
 }
