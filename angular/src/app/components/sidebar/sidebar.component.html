@@ -1,0 +1,18 @@
+<div class="sidebar" [class.closed]="isSidebarClosed">
+    <div class="header-div"> 
+        <button class="sidebar-toggle-btn" (click)="toggleSidebar()">☰</button>
+    </div>
+    <div class="sidebar-content" [class.closed]="isSidebarClosed">
+        <p>Hello</p>
+    </div>
+</div>
+<div id="content">
+    <div class="header-div">
+        <button class="sidebar-toggle-btn"(click)="toggleSidebar()" [class.closed]="!isSidebarClosed">☰</button>
+        <label id="page-title">Devil Hunter Files</label>
+        <div id="router-auth">
+            <a class="auth-link-button" routerLink="/login">Connexion</a>
+            <a class="auth-link-button" routerLink="/signup">Créer un compte</a>
+        </div>
+    </div> 
+</div>
