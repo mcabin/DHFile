@@ -3,12 +3,11 @@ import { StatisticCaseComponent } from "./statistic-case/statistic-case.componen
 import { Character } from '../../models/character.model';
 import { StatisticEnum } from '../../models/enum/statistic.enum';
 @Component({
-  selector: 'app-statistic',
-  standalone: true,
-  imports: [StatisticCaseComponent],
-  templateUrl: './statistic.component.html',
-  styleUrl: './statistic.component.css',
-  encapsulation:ViewEncapsulation.Emulated
+    selector: 'app-statistic',
+    imports: [StatisticCaseComponent],
+    templateUrl: './statistic.component.html',
+    styleUrl: './statistic.component.css',
+    encapsulation: ViewEncapsulation.Emulated
 })
 
 export class StatisticComponent {

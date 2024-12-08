@@ -4,11 +4,10 @@ import { Character } from '../../../models/character.model';
 import { StatisticEnum } from '../../../models/enum/statistic.enum';
 import { Statistic } from '../../../models/statistic.model';
 @Component({
-  selector: 'app-statistic-case',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './statistic-case.component.html',
-  styleUrl: './statistic-case.component.css'
+    selector: 'app-statistic-case',
+    imports: [FormsModule],
+    templateUrl: './statistic-case.component.html',
+    styleUrl: './statistic-case.component.css'
 })
 export class StatisticCaseComponent {
   @Input({required:true}) imgPath!:string;

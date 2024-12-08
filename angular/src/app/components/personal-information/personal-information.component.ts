@@ -7,12 +7,11 @@ import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-personal-information',
-  standalone: true,
-  imports: [CommonModule ,FormsModule],
-  templateUrl: './personal-information.component.html',
-  styleUrl: './personal-information.component.css',
-  encapsulation:ViewEncapsulation.Emulated
+    selector: 'app-personal-information',
+    imports: [CommonModule, FormsModule],
+    templateUrl: './personal-information.component.html',
+    styleUrl: './personal-information.component.css',
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class PersonalInformationComponent {
   constructor(private apiService: CountriesAPIService) {}
