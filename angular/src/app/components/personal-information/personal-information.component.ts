@@ -1,6 +1,6 @@
-import { Component,Input,ViewEncapsulation } from '@angular/core';
+import { Component,Input,isStandalone,ViewEncapsulation } from '@angular/core';
 import { Character } from '../../models/character.model';
-import {CountriesAPIService} from '../../service/countries-api.service'
+import {CountriesAPIService} from '../../service/api/countries-api.service'
 import { CommonModule } from '@angular/common';
 import { Country } from '../../models/country.model';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,8 @@ import { FormsModule } from '@angular/forms';
     imports: [CommonModule, FormsModule],
     templateUrl: './personal-information.component.html',
     styleUrl: './personal-information.component.css',
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    standalone:true
 })
 export class PersonalInformationComponent {
   constructor(private apiService: CountriesAPIService) {}

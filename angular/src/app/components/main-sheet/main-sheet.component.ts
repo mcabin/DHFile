@@ -3,6 +3,7 @@ import { PersonalInformationComponent } from "../personal-information/personal-i
 import { StatisticComponent } from "../statistic/statistic.component";
 import { Character } from '../../models/character.model';
 import { Statistic } from '../../models/statistic.model';
+import { CharacterApiService } from '../../service/api/character-api.service';
 
 @Component({
     selector: 'app-main-sheet',
@@ -12,6 +13,10 @@ import { Statistic } from '../../models/statistic.model';
     encapsulation: ViewEncapsulation.Emulated
 })
 export class MainSheetComponent {
-  character:Character=new Character("Jhon","Red","English",44,new Statistic(0,10));
+  constructor(private characterApiService:CharacterApiService){}
+  character:Character=new Character("Jhon","Red","English",44,new Statistic(0,10),"img/Aki.png");
   
+  charaTest(){
+    this.characterApiService.createNewCharacter(this.character);
+  }
 }

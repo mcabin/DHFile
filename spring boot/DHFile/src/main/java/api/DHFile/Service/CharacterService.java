@@ -5,14 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import api.DHFile.Entities.Character;
+import api.DHFile.Entities.User;
 import api.DHFile.Repository.CharacterRepository;
 @Service
 public class CharacterService {
     @Autowired
     CharacterRepository characterRepository;
-
-    public CharacterService(CharacterRepository characterRepository) {
+    @Autowired
+    AuthenticationService authenticationService;
+    public CharacterService(CharacterRepository characterRepository,AuthenticationService authenticationService) {
         this.characterRepository = characterRepository;
+        this.authenticationService=authenticationService;
     }
     
     public Character findById(int id){
@@ -38,5 +41,13 @@ public class CharacterService {
 
     public void deleteById(int id){
         this.characterRepository.deleteById(id);
+    }
+
+    public List<Character> findByUser(String username){
+        User user=this.authenticationService.findByUsername(username);
+        if(user==null){
+            return this.characterRepository.findByUser(user);
+        }
+        return null;
     }
 }

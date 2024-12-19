@@ -1,35 +1,33 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { User } from '../../models/user.model';
-import { ApiUserService } from '../../service/api-user.service';
-import { response } from 'express';
-
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../service/api/auth-service.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 @Component({
     selector: 'app-sign-up',
-    imports: [RouterLink],
+    imports: [RouterLink,CommonModule,FormsModule],
     templateUrl: './sign-up.component.html',
-    styleUrl: './sign-up.component.css'
+    styleUrl: './sign-up.component.css',
+    standalone:true
 })
 export class SignUpComponent {
-
-  constructor(private apiService:ApiUserService){}
-
-    signUp(pseudo:string,password:string,passwordConfirmation:string){
-      if(password!=passwordConfirmation){
-        //Handle not same password
-        console.log("Pas identique");
-      }
-      else{
-        let user:User=new User(pseudo,password)
-        this.apiService.postData(user).subscribe({
-          next: (response)=>{
-            console.log("Réponse de l'API",response);
-          },
-          error:(error)=>{
-            console.error('Erreur lors de l\'envoi des données:', error);
-          }
-        })
-      }
-
+    username:string='';
+    password:string='';
+    confirmPassword:string='';
+    constructor(private authService:AuthService,private  router:Router){}
+  register(){
+    if(this.password==this.confirmPassword && this.password!=''){
+        this.authService.register({ pseudo: this.username, password: this.password }).subscribe({
+            next: (response) => {
+              this.authService.saveToken(response.token);
+              console.log('Connexion réussie!');
+              this.router.navigateByUrl("/login");
+            },
+            error: (err) => {
+              console.error(err);
+            }
+          });
     }
+    
+  }
 }

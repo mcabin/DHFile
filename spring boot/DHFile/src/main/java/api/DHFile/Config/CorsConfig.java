@@ -9,11 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class CorsConfig implements WebMvcConfigurer{
-    
+    private final String angularServAdress="http://localhost:4200";
     @Bean
      public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("*"); // Allowed origin
+        configuration.addAllowedOriginPattern(angularServAdress); // Allowed origin
         configuration.addAllowedMethod("*"); // All HTTP methods
         configuration.addAllowedHeader("*"); // All headers
         configuration.setAllowCredentials(true); // Allow cookies

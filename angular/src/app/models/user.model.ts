@@ -1,5 +1,5 @@
 export class User{
-    constructor(public pseudo:string,public password:string){
+    constructor(public pseudo:string){
 
     }
 

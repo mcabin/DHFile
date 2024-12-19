@@ -1,5 +1,9 @@
 import { StatisticEnum } from "./enum/statistic.enum";
-
+export interface StatisticResponse{
+    statMap:Map<StatisticEnum,number>;
+    minStatValue:number;
+    maxStatValue:number;
+}
 export class Statistic{
 
     public  statMap:Map<StatisticEnum,number>=new Map<StatisticEnum,number>;

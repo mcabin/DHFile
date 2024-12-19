@@ -1,0 +1,17 @@
+
+<div class="component-body">
+    <div class="sidebar" [class.closed]="containerVariable.leftSidebar">
+        <div class="header-div"> 
+            <button class="sidebar-toggle-btn" (click)="containerVariable.toggleLeftSidebar()">☰</button>
+        </div>
+        <div class="sidebar-content" [class.closed]="containerVariable.leftSidebar">
+            <a class="sidebar-title sidebar-text">Personnage</a>
+            <a class="sidebar-text">Créer un nouveau personnage</a>
+            <a class="sidebar-text">Liste des personnages</a>
+        </div>
+    </div>
+    <div class="right-body" [class.extend]="containerVariable.leftSidebar">
+        <app-header></app-header>
+        <ng-container *ngComponentOutlet="dynamicContent"></ng-container>
+    </div>
+</div>

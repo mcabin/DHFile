@@ -7,7 +7,8 @@ import { StatisticEnum } from '../../models/enum/statistic.enum';
     imports: [StatisticCaseComponent],
     templateUrl: './statistic.component.html',
     styleUrl: './statistic.component.css',
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    standalone:true
 })
 
 export class StatisticComponent {

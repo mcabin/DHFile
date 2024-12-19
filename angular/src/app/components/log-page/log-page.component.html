@@ -2,14 +2,17 @@
     <h2 id="log-title">Login utilisateur</h2>
     <div id="pseudo-container" class="log-input-container">
         <label class="log-label" for="pseudo-input">Pseudo:</label>
-        <input type="text" name="Pseudo" id="pseudo-input">
+        <input type="text" name="Pseudo" id="pseudo-input" [(ngModel)]="username">
     </div>
     <div id="password-container" class="log-input-container">
         <label class="log-label" for="password-input">Mot de passe:</label>
-        <input type="password" name="Password" id="password-input">
+        <input type="password"  name="Password" id="password-input" [(ngModel)]="password">
     </div>
-    <button  id="log-button">Connexion</button>
+    <button  id="log-button" (click)="login()">Connexion</button>
     <a routerLink="/signup">
         Créer un compte
     </a>
+    <div *ngIf="errorMessage">
+        <p>Le nom d'utilisateur ou le mot de passe est invalide!</p>
+    </div>
 </div>

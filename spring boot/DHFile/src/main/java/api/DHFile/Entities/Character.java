@@ -1,7 +1,13 @@
 package api.DHFile.Entities;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 @Entity
 @Table(name="CHARA")
+@Data
+@Builder
+@AllArgsConstructor
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,63 +20,23 @@ public class Character {
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "STATISTIC_ID")
     private Statistic statistic;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="NATIONALITY_ID")
     private Country nationality;
-
+    @ManyToOne
+    @JoinColumn(name="USER_ID")
+    private User user;
     public Character(){
         this.statistic=new Statistic();
     }
-    public Character( String lastname, String firstname, int age,String ppImgLink,Country nationality) {
+    public Character( String lastname, String firstname, int age,String ppImgLink,Country nationality,User user) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.age = age;
         this.ppImgLink=ppImgLink;
         this.nationality=nationality;
     }
-    
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getLastname() {
-        return lastname;
-    }
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-    public String getFirstname() {
-        return firstname;
-    }
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public Statistic getStatistic() {
-        return statistic;
-    }
-    public void setStatistic(Statistic statistic) {
-        this.statistic = statistic;
-    }
-    public String getPpImgLink() {
-        return ppImgLink;
-    }
-    public void setPpImgLink(String ppImgLink) {
-        this.ppImgLink = ppImgLink;
-    }
-    public Country getNationality() {
-        return nationality;
-    }
-    public void setNationality(Country nationality) {
-        this.nationality = nationality;
-    }
+
     
 
 }

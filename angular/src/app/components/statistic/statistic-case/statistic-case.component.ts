@@ -7,7 +7,8 @@ import { Statistic } from '../../../models/statistic.model';
     selector: 'app-statistic-case',
     imports: [FormsModule],
     templateUrl: './statistic-case.component.html',
-    styleUrl: './statistic-case.component.css'
+    styleUrl: './statistic-case.component.css',
+    standalone:true
 })
 export class StatisticCaseComponent {
   @Input({required:true}) imgPath!:string;

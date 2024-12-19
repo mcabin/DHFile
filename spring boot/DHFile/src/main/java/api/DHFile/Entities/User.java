@@ -35,7 +35,6 @@ public class User implements UserDetails{
     private String password;
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -48,6 +47,5 @@ public class User implements UserDetails{
     public String getPassword() {
         return password;
     }
-
     
 }

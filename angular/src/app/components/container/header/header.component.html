@@ -1,0 +1,12 @@
+<div class="header-div">
+    <button class="sidebar-toggle-btn"(click)="containerVariable.toggleLeftSidebar()" [class.closed]="!containerVariable.leftSidebar">☰</button>
+    <label id="page-title">Devil Hunter Files</label>
+    <div *ngIf="!isLogged()" class="router-auth">
+        <button (click)="changeRouter('/login')" routerLink="/login" class="auth-link-button">Connexion</button>
+        <button (click)="changeRouter('/signup')" class="auth-link-button">Créer un compte</button>
+    </div>
+    <div *ngIf="isLogged()" class="auth-information" >
+        <p class="auth-info-text">Bienvenue {{getName()}}</p>
+        <button class="auth-link-button" (click)="logout()" title="Déconnexion">↪</button>
+    </div>
+</div>

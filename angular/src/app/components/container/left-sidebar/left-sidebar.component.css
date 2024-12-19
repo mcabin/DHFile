@@ -1,0 +1,39 @@
+/* Sidebar */
+.sidebar{
+    background-color: rgb(180, 128, 32);
+    transition: width 0.3s ease-in-out;
+    height:100% ;
+    width: 8vw;
+    min-width: 8vw;
+    max-width: 15vw;
+  }
+
+   .sidebar.closed{
+    min-width: 0%;
+    width: 0;
+  } 
+
+  .sidebar-toggle-btn{
+    background-color: rgb(38, 88, 94);
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+    
+  }
+  .header-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(234, 236, 236);
+    padding: 0.5rem 0%;
+    height: 3rem;
+    max-height: 15vh;
+}
+
+  .sidebar-toggle-btn.closed{
+    visibility: hidden;    
+  }
+
+  .sidebar-content.closed{
+    display: none;
+  }

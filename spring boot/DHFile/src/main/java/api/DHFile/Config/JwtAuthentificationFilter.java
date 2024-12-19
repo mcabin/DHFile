@@ -4,12 +4,12 @@ import java.io.IOException;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import api.DHFile.Entities.User;
 import api.DHFile.Service.JwtService;
 import io.micrometer.common.lang.NonNull;
 import jakarta.servlet.FilterChain;
@@ -30,8 +30,8 @@ public class JwtAuthentificationFilter extends OncePerRequestFilter{
         final String authHeader=request.getHeader("Authorization");
         final String jwt;
         final String pseudo;
-
-        if(authHeader==null || !authHeader.startsWith("Bearer ")){
+        String path = request.getRequestURI();
+        if(path.startsWith("/api/auth/") ||authHeader==null || !authHeader.startsWith("Bearer ")){
             filterChain.doFilter(request, response);
             return;
         }
@@ -39,14 +39,11 @@ public class JwtAuthentificationFilter extends OncePerRequestFilter{
         jwt=authHeader.substring(bearerSize);
         pseudo=jwtService.extractUsername(jwt);
         if(pseudo!=null && SecurityContextHolder.getContext().getAuthentication()==null){
-            UserDetails userDetails=this.userService.loadUserByUsername(pseudo);
+            User userDetails=(User) this.userService.loadUserByUsername(pseudo);
             if(jwtService.isTokenValid(jwt, userDetails)){
                 UsernamePasswordAuthenticationToken authToken=new UsernamePasswordAuthenticationToken(userDetails, null,userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
-                System.out.println("get context");
-
-
             }
         }
         filterChain.doFilter(request, response);
